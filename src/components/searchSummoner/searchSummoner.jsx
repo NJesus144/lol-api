@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import axios from "axios";
 
-import Input from "../form/input/Input";0
+import Input from "../form/input/Input";
 import Button from "../button/Button";
+import CardSummoner from "../cardSummoner/CardSummoner";
 
 import { useState} from "react";
 
@@ -10,9 +11,7 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const MarginSpace = styled.div`
-  
-`;
+const StyledCardSummoner = styled.div``;
 
 export default function SearchSummoner() {
   const [textSummoner, setTextSummoner] = useState();
@@ -45,22 +44,15 @@ export default function SearchSummoner() {
 
 
   return (
+  <>
     <Container>
       <Input placeholder="Digite o nome do invocador" onChange={(e) => setTextSummoner(e.target.value)} />
         <Button onClick={searchForPlayer}>Buscar</Button>
-    
-     
-          <p>{playerData.name}</p>
-          <p>{playerData.id}</p>
-          <p>Summoner level: {playerData.summonerLevel}</p>
-          <p>{rankedPlayer.wins}123</p>
-          
-          <img
-            src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${playerData.profileIconId}.png`}
-            width="100"
-            alt=""
-          />
-    
     </Container>
+
+<CardSummoner />
+  </>
   );
 }
+
+//`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${playerData.profileIconId}.png`
