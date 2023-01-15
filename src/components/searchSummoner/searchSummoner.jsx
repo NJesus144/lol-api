@@ -107,7 +107,7 @@ export default function SearchSummoner() {
     <>
       <Container>
         <Input
-          placeholder="Digite o nome do invocador"
+          placeholder="Digite o nome de invocador"
         
           onChange={(e) => setSummonerName(e.target.value)}
         />
