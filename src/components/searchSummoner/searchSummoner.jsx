@@ -23,7 +23,6 @@ const H1 = styled.h1`
 color: yellow;
 `;
 
-
 const Containerimg = styled.div`
   margin-top: 100px;
   display: flex;
