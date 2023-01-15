@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  background-color: red;
+  background-color: #db0404;
   padding: 10px 20px;
   border: none;
   font-size: 16px;
@@ -10,13 +10,14 @@ const StyledButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: all .3s;
+  margin-left: 20px;
 
   &:hover{
-  background-color: #f02727;
+  background-color: #ff0101;
 
   }
 `;
 
-export default function Button(props) {
-  return <StyledButton>{props.children}</StyledButton>;
+export default function Button({children, onClick}) {
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 }

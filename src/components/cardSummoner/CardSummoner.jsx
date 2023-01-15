@@ -39,6 +39,7 @@ const StyledSpan = styled.span`
 
 
 const StyledImage = styled.img``;
+const StyledImageElo = styled.img``;
 
 const StyledH1 = styled.h1``;
 const StyleWins = styled.h2`
@@ -74,28 +75,55 @@ border-radius: 50%;
 text-align: center;
 `;
 
-export default function CardSummoner() {
+export default function CardSummoner({profileIcon, name, summonerLevel, tier, rank, wins, losses, winRate}) {
+  
+  function validateElo(elo) {
+    switch (elo) {
+      case "BRONZE":
+        return <StyledImageElo src="/Emblem_Bronze.png" alt="elo" width="150"/>;
+      case "IRON":
+        return <StyledImageElo src="/Emblem_Iron.png "alt="elo" width="150"/>;
+      case "SILVER":
+        return <StyledImageElo src="/Emblem_Silver.png "alt="elo" width="150"/>;
+      case "GOLD":
+        return <StyledImageElo src="/Emblem_Gold.png "alt="elo" width="150"/>;
+      case "PLATINUM":
+        return <StyledImageElo src="/Emblem_Platinum.png "alt="elo" width="150" />;
+      case "DIAMOND":
+        return <StyledImageElo src="/Emblem_Diamond.png "alt="elo" width="150"/>;
+      case "GRANDMASTER":
+        return <StyledImageElo src="/Emblem_Grandmaster.png "alt="elo" width="150"/>;
+      case "MASTER":
+        return <StyledImageElo src="/Emblem_Master.png "alt="elo" width="150"/>;
+      case "CHALLENGER":
+        return <StyledImageElo src="/Emblem_Challenger.png "alt="elo" width="150"/>;
+      default: break;
+    }
+  }
+  
+  
   return (
     <StyledContainer>
       <StyledContent>
-        <StyledImage src="/icon.jfif" width="150" />
+        <StyledImage src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${profileIcon}.png`} width="150" />
         <StyledConentInfo>
-          <StyledH1>top1912</StyledH1>
+          <StyledH1>{name}</StyledH1>
           <StyledInfoSummoner>
-            <StyledSpan>Nível: 278</StyledSpan>
-            <StyledH2>MASTER</StyledH2>
+            <StyledSpan>Nível: {summonerLevel}</StyledSpan>
+            <StyledH2>{tier} {rank}</StyledH2>
           </StyledInfoSummoner>
         </StyledConentInfo>
-        <StyledImage src="/Emblem_Diamond.png" width="150" />
+        <StyledImageElo   />
+        {validateElo(tier)}
       </StyledContent>
       <StyledLine />
       <StyledBottomInfo>
         <StyledMatches>
-          <StyleWins> Wins: 24</StyleWins>
-          <StyleLosses> Losses: 14</StyleLosses>
+          <StyleWins> Wins: {wins}</StyleWins>
+          <StyleLosses> Losses: {losses}</StyleLosses>
         </StyledMatches>
         <StyledWinRate>
-          <StyledSpan>63%</StyledSpan>
+          <StyledSpan>{winRate}%</StyledSpan>
           <StyledSpan>Win Rate</StyledSpan>
         </StyledWinRate>
       </StyledBottomInfo>
