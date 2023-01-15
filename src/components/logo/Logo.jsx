@@ -4,10 +4,14 @@ const StyledImage = styled.img`
 width: 300px;
 `;
 
-export default function Logo() {
+export default function Logo({ image }) {
   return (
     <div>
-      <StyledImage src="/league-logo.png" />
+      <StyledImage src={image} />
     </div>
   );
+}
+
+Logo.defaultProps = {
+  image: "/league-logo.png"
 }

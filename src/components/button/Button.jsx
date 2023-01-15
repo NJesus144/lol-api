@@ -18,6 +18,13 @@ const StyledButton = styled.button`
   }
 `;
 
-export default function Button({children, onClick}) {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+export default function Button({children, onClick, disabled, loading}) {
+  return (
+  <StyledButton onClick={onClick} disabled={disabled || loading}> 
+  
+  {loading && <img src="/loading.svg" width="16px"/>}
+  {!loading && children} 
+  </StyledButton>
+  
+  );
 }
