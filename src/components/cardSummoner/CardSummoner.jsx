@@ -6,10 +6,25 @@ const StyledContainer = styled.div`
   width: 700px;
   padding: 20px;
   border-radius: 10px;
+
+
+  @media(max-width:700px){
+    width: 400px;
+  } 
+
 `;
 const StyledContent = styled.div`
   display: flex;
   justify-content: space-between;
+  
+  @media(max-width:700px){
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+  } 
+  @media(max-width:400px){
+   
+  } 
 `;
 
 const StyledLine = styled.div`
@@ -38,8 +53,19 @@ const StyledSpan = styled.span`
 `;
 
 
-const StyledImage = styled.img``;
-const StyledImageElo = styled.img``;
+const StyledImage = styled.img`
+border-radius: 20px;
+
+@media(max-width:400px){
+   width: 120px;
+  } 
+`;
+const StyledImageElo = styled.img`
+
+@media(max-width:400px){
+   width: 120px;
+  } 
+`;
 
 const StyledH1 = styled.h1``;
 const StyleWins = styled.h2`
@@ -57,6 +83,10 @@ const StyledBottomInfo = styled.div`
 display: flex ;
 justify-content: space-around;
 align-items: center;
+
+@media(max-width:400px){
+  flex-direction: column;
+} 
 `;
 
 const StyledMatches = styled.div`
@@ -105,7 +135,7 @@ export default function CardSummoner({profileIcon, name, summonerLevel, tier, ra
   return (
     <StyledContainer>
       <StyledContent>
-        <StyledImage src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${profileIcon}.png`} width="150" />
+        <StyledImage src={`http://ddragon.leagueoflegends.com/cdn/13.1.1/img/profileicon/${profileIcon}.png`} width="150px" />
         <StyledConentInfo>
           <StyledH1>{name}</StyledH1>
           <StyledInfoSummoner>

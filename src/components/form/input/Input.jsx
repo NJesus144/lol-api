@@ -8,6 +8,11 @@ const StyledInput = styled.input`
   font-weight: bold;
   font-size: 16px;
   color: #9c9c9c;
+  height: 40px;
+
+  @media(max-width:400px){
+  width: 100%;
+} 
  
 `
 

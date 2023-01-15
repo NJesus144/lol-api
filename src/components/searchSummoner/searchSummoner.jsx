@@ -1,3 +1,6 @@
+import { useState} from "react";
+
+
 import styled from "styled-components";
 import axios from "axios";
 
@@ -6,11 +9,14 @@ import Button from "../button/Button";
 import CardSummoner from "../cardSummoner/CardSummoner";
 import Logo from "../logo/Logo";
 
-import { useState, useEffect } from "react";
-
 const Container = styled.div`
   padding: 20px;
-  background-color: red;
+  display: flex;
+  align-items: center;  
+
+  @media(max-width:400px){
+  flex-direction: column;
+} 
 `;
 
 const H1 = styled.h1`
@@ -23,6 +29,11 @@ const Containerimg = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media(max-width:400px){
+  width: 300px;
+  text-align: center;
+} 
 `;
 
 export default function SearchSummoner() {
@@ -30,21 +41,25 @@ export default function SearchSummoner() {
   const [playerData, setPLayerData] = useState({});
   const [rankedPlayer, setRankedPlayer] = useState({});
   const [searchSummoner, setSearchSummoner] = useState(true);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
+
   const searchForPlayer = async () => {
-    setRankedPlayer({});
-    setPLayerData({});
+    setPLayerData({})
+    setRankedPlayer({})
     try {
+      setError(false)
+      setLoading(true)
       const response = await axios.get(`/api/summoner/${summonerName}`);
       setPLayerData(response.data);
       infoRankedSummoner(response.data.id);
       setSearchSummoner(false);
-      setError(false);
+
     } catch (err) {
       if (err.code === "ERR_BAD_REQUEST") {
         setError(true);
+        setLoading(false);
         setSearchSummoner(false);
       }
     }
@@ -53,8 +68,8 @@ export default function SearchSummoner() {
   const infoRankedSummoner = async (id) => {
     try{
       const response = await axios.get(`/api/infoRankedSummoner/${id}`);
-      console.log(response.data)
       setSearchSummoner(false);
+      setLoading(false)
 
       const { tier, rank, wins, losses, queueType } = response.data[1]
         ? response.data[1]
@@ -68,7 +83,6 @@ export default function SearchSummoner() {
         tier,
         winRate: ((wins / (wins + losses)) * 100).toFixed(1),
       });
-
     }catch(err){
       if(err.message === "Cannot read properties of undefined (reading 'tier')"){
         setRankedPlayer({
@@ -80,6 +94,7 @@ export default function SearchSummoner() {
           winRate: '',
         });
       }
+      setLoading(false)
     } 
   };
  
@@ -90,7 +105,7 @@ export default function SearchSummoner() {
           placeholder="Digite o nome do invocador"
           onChange={(e) => setSummonerName(e.target.value)}
         />
-        <Button onClick={searchForPlayer} loading={false}>
+        <Button onClick={searchForPlayer} loading={loading}>
           Buscar
         </Button>
       </Container>
@@ -102,7 +117,7 @@ export default function SearchSummoner() {
       {error && (
         <Containerimg>
           <Logo image="/blitz.webp" />
-          <H1>Invocador Não Encontrado</H1>
+          <H1>Invocador não encontrado.</H1>
         </Containerimg>
       )}
       {!searchSummoner && !error && (

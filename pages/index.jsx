@@ -1,9 +1,9 @@
-import SearchSummoner from "../src/components/searchSummoner/searchSummoner";
-import Logo from "../src/components/logo/Logo";
 import styled from "styled-components";
 
-const Container = styled.div`
+import SearchSummoner from "../src/components/searchSummoner/searchSummoner";
+import Logo from "../src/components/logo/Logo";
 
+const Container = styled.div`
   margin: 0 auto;
   width: 100%;
 `;

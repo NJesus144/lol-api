@@ -9,7 +9,9 @@ export default async function infoRankedSummoner(req, res) {
     );
     res.status(200).send(response.data);
   } catch (err) {
-    console.log(err);
-    res.status(500).send(err);
+    if (err.code === "ERR_BAD_REQUEST")
+      return res.status(400).send(err.message);
+
+    res.status(500).send(err.message);
   }
 }
