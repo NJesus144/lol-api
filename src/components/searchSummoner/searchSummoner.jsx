@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState, useEffect} from "react";
 
 
 import styled from "styled-components";
@@ -36,13 +36,12 @@ const Containerimg = styled.div`
 `;
 
 export default function SearchSummoner() {
-  const [summonerName, setSummonerName] = useState();
+  const [summonerName, setSummonerName] = useState(" ");
   const [playerData, setPLayerData] = useState({});
   const [rankedPlayer, setRankedPlayer] = useState({});
   const [searchSummoner, setSearchSummoner] = useState(true);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
 
   const searchForPlayer = async () => {
     setPLayerData({})
@@ -96,12 +95,20 @@ export default function SearchSummoner() {
       setLoading(false)
     } 
   };
+
+  useEffect(()=>{
+    if(summonerName.length <= 0) {
+      setSearchSummoner(true);
+      setError(false)
+    }
+  }, [summonerName])
  
   return (
     <>
       <Container>
         <Input
           placeholder="Digite o nome do invocador"
+        
           onChange={(e) => setSummonerName(e.target.value)}
         />
         <Button onClick={searchForPlayer} loading={loading}>

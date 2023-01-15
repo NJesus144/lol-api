@@ -9,9 +9,9 @@ export default async function InfoSummoner  (req, res)  {
      res.status(200).send(response.data);
   } catch(err) {
      if(err.code === 'ERR_BAD_REQUEST')
-       return res.status(400).send(err.message);
+       return res.status(400).send();
        
-    res.status(500).send(err.message);
+    res.status(500).send();
     
   }
 };
