@@ -8,7 +8,7 @@
 
 https://lol-mj1ce948k-njesus144.vercel.app/
 
-Projeto feito consumindo a API do League of Lengends por meio do backend do NextJS. A aplicação consiste em buscar pelo nome de invocador de qualquer jogar do servidor brasileiro.
+Projeto feito consumindo a API do League of Legends por meio do backend do NextJS. A aplicação consiste em buscar pelo nome de invocador de qualquer jogar do servidor brasileiro.
 
 
 ## Layout web
