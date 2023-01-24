@@ -31,7 +31,10 @@ Projeto feito consumindo a API do League of Legends por meio do backend do NextJ
 
 # Como executar o projeto
 
-## Social Dev
+## API
+Para ter acesso a API do league você precisa criar uma conta em https://developer.riotgames.com/ e solicitar sua API KEY.
+
+## LOL API
 Pré-requisitos: npm / yarn
 
 ```bash
