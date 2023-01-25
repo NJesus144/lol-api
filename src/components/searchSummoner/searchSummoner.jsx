@@ -59,7 +59,7 @@ export default function SearchSummoner() {
         setError(true);
         setLoading(false);
         setSearchSummoner(false);
-      }
+      } 
     }
   };
 
