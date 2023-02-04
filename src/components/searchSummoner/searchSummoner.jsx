@@ -69,7 +69,7 @@ export default function SearchSummoner() {
       setSearchSummoner(false);
       setLoading(false)
 
-      const { tier, rank, wins, losses, queueType } = response.data[1]
+      const { tier = "Sem pontos de liga", rank, wins, losses, queueType } = response.data[1]
         ? response.data[1]
         : response.data[0];
 

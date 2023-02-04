@@ -20,7 +20,6 @@ export default function homePage() {
     <Container>
       <Content>
         <Logo />
-
         <SearchSummoner />
       </Content>
     </Container>
